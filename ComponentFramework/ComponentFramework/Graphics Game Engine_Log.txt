@@ -1,0 +1,8 @@
+[INFO]: Starting the GameSceneManager
+[INFO]: SceneManager Constructor
+[INFO]: OpenGL version: 4.5.0 - Build 25.20.100.6446
+[INFO]: Graphics card vendor Intel
+[INFO]: Graphics card name Intel(R) UHD Graphics 630
+[INFO]: GLSL Version 4.50 - Build 25.20.100.6446
+[INFO]: Creating Timer
+[INFO]: Created Scene0: 

@@ -1,0 +1,23 @@
+﻿  Debug.cpp
+  GameObject.h
+  DemoObject.cpp
+  ObjLoader2.cpp
+  Physics.cpp
+D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\Physics.cpp(30,52): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  PhysicsObject.cpp
+D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\PhysicsObject.cpp(11,30): warning C4305: 'argument': truncation from 'double' to 'float'
+D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\PhysicsObject.cpp(23,30): warning C4305: 'argument': truncation from 'double' to 'float'
+  SceneManager.cpp
+  Main.cpp
+  Mesh.cpp
+  MMath.cpp
+  ObjLoader.cpp
+  Scene0.cpp
+  Scene1.cpp
+  Shader.cpp
+  Texture.cpp
+  Timer.cpp
+  VMath.cpp
+  Window.cpp
+  Generating Code...
+  ComponentFramework.vcxproj -> D:\GitRepos\Running-Late-test\ComponentFramework\Debug\ComponentFramework.exe
