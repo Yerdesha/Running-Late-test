@@ -7,15 +7,21 @@ using namespace MATH;
 
 /// Forward declarations 
 union SDL_Event;
+class DemoObject;
 class Mesh;
 class Shader;
 class Texture;
 
 class Scene1 : public Scene {
 private:
-	Mesh *meshPtr;
-	Shader *shaderPtr;
-	Texture *texturePtr;
+	DemoObject* demoObject;
+	//DemoObject* demoObject2;
+	Vec3 lightSource;
+	Mesh* meshPtr;
+	//Mesh* meshPtr2;
+	Shader* shaderPtr;
+	Texture* texturePtr;
+	//Texture* texturePtr2;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
 public:

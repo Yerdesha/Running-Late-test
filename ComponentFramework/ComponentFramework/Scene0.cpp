@@ -9,7 +9,6 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "MMath.h"
-#include "Debug.h"
 #include "Physics.h"
 
 float totalTime = 0.0f;
