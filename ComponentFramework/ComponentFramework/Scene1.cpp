@@ -53,8 +53,18 @@ bool Scene1::OnCreate() {
 	return true;
 }
 
-void Scene1::HandleEvents(const SDL_Event &sdlEvent) {
-	
+void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
+	while (SDL_PollEvent(&sdlEvent)) {
+		if (sdlEvent.type == SDL_KEYDOWN) {
+			switch (sdlEvent.key.keysym.scancode) {
+			case SDL_SCANCODE_D:
+				demoObject->applyForce(Vec3(0.0f, 2.0f, 0.0f));
+			default:
+				HandleEvents(sdlEvent);
+				break;
+			}
+		}
+	}
 }
 
 void Scene1::Update(const float deltaTime) {
@@ -72,7 +82,7 @@ void Scene1::Update(const float deltaTime) {
 
 	totalTime2 += deltaTime;
 	//demoObject->setVel(Vec3(1.0, 0.0, 0.0));
-	Physics::ApplyForces(*demoObject, demoObject->waterHeight);
+	//Physics::ApplyForces(*demoObject, demoObject->waterHeight);
 	Physics::SimpleNewtonMotion(*demoObject, deltaTime);
 	demoObject->setModelMatrix(MMath::translate(demoObject->getPos()));
 	//demoObject->getPos+=vel * deltaTime + (0.5 * accel * deltaTime)
