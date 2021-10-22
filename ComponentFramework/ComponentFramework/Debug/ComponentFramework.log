@@ -1,13 +1,2 @@
 ﻿  Scene1.cpp
-  SceneManager.cpp
-D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\SceneManager.cpp(127): error C2259: 'Scene1': cannot instantiate abstract class
-D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\Scene1.h(15): message : see declaration of 'Scene1'
-D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\SceneManager.cpp(127): message : due to following members:
-D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\SceneManager.cpp(127): message : 'void Scene::HandleEvents(const SDL_Event &)': is abstract
-D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\Scene.h(13): message : see declaration of 'Scene::HandleEvents'
-D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\SceneManager.cpp(127,28): error C2259: 'Scene1': cannot instantiate abstract class
-D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\Scene1.h(15): message : see declaration of 'Scene1'
-D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\SceneManager.cpp(127,28): message : due to following members:
-D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\SceneManager.cpp(127,28): message : 'void Scene::HandleEvents(const SDL_Event &)': is abstract
-D:\GitRepos\Running-Late-test\ComponentFramework\ComponentFramework\Scene.h(13): message : see declaration of 'Scene::HandleEvents'
-  Generating Code...
+  ComponentFramework.vcxproj -> D:\GitRepos\Running-Late-test\ComponentFramework\Debug\ComponentFramework.exe

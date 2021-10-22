@@ -53,18 +53,21 @@ bool Scene1::OnCreate() {
 	return true;
 }
 
-void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
+void Scene1::HandleEvents(const SDL_Event&) {
+	SDL_Event sdlEvent;
 	while (SDL_PollEvent(&sdlEvent)) {
 		if (sdlEvent.type == SDL_KEYDOWN) {
 			switch (sdlEvent.key.keysym.scancode) {
 			case SDL_SCANCODE_D:
-				demoObject->applyForce(Vec3(0.0f, 2.0f, 0.0f));
+				printf("Pressing D!");
+				demoObject->applyForce(Vec3(0.0f, 50.0f, 0.0f));
 			default:
 				HandleEvents(sdlEvent);
 				break;
 			}
 		}
 	}
+	demoObject->HandleEvents(sdlEvent);
 }
 
 void Scene1::Update(const float deltaTime) {
