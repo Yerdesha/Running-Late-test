@@ -7,4 +7,3 @@
 [INFO]: Creating Timer
 [INFO]: Created Scene0: 
 [INFO]: Created Scene1: 
-[INFO]: Deleting the GameSceneManager

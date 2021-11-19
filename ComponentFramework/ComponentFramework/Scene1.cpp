@@ -58,16 +58,23 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
 		printf("Key down");
 		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_W) {
 			printf("Pressing W\n");
+			demoObject->setVel(Vec3(0.0f, 10.0f, 0.0f));
 		}
 		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_A) {
 			printf("Pressing A\n");
+			demoObject->setVel(Vec3(-10.0f, 0.0f, 0.0f));
 		}
 		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_S) {
 			printf("Pressing S\n");
+			demoObject->setVel(Vec3(0.0f, -10.0f, 0.0f));
 		}
 		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_D) {
 			printf("Pressing D\n");
+			demoObject->setVel(Vec3(10.0f, 0.0f, 0.0f));
 		}
+	}
+	else if (sdlEvent.type == SDL_EventType::SDL_KEYUP) {
+		demoObject->setVel(Vec3(0.0f, 0.0f, 0.0f));
 	}
 	sdlEvent1 = sdlEvent;
 }
