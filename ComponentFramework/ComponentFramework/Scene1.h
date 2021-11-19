@@ -24,6 +24,7 @@ private:
 	//Texture* texturePtr2;
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
+	SDL_Event sdlEvent1;
 public:
 	explicit Scene1();
 	virtual ~Scene1();

@@ -53,34 +53,37 @@ bool Scene1::OnCreate() {
 	return true;
 }
 
-void Scene1::HandleEvents(const SDL_Event&) {
-	SDL_Event sdlEvent;
-	while (SDL_PollEvent(&sdlEvent)) {
-		if (sdlEvent.type == SDL_KEYDOWN) {
-			switch (sdlEvent.key.keysym.scancode) {
-			case SDL_SCANCODE_D:
-				printf("Pressing D!");
-				demoObject->applyForce(Vec3(0.0f, 50.0f, 0.0f));
-			default:
-				HandleEvents(sdlEvent);
-				break;
-			}
+void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
+	if (sdlEvent.type == SDL_EventType::SDL_KEYDOWN) {
+		printf("Key down");
+		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_W) {
+			printf("Pressing W\n");
+		}
+		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_A) {
+			printf("Pressing A\n");
+		}
+		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_S) {
+			printf("Pressing S\n");
+		}
+		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_D) {
+			printf("Pressing D\n");
 		}
 	}
-	demoObject->HandleEvents(sdlEvent);
+	sdlEvent1 = sdlEvent;
 }
 
 void Scene1::Update(const float deltaTime) {
 	demoObject->Update(deltaTime);
+	HandleEvents(sdlEvent1);
 
 	//console output that helps track and tell everything in the console
 	if (totalTime2 >= TimeCounter2) {
 		TimeCounter2 += deltaTime;
-		std::cout
+		/*std::cout
 			<< "Time: " << (int)totalTime2 << "\t "
 			<< "|Position: " << (demoObject->getPos().y) << "\t  "
 			<< "|Velocity: " << (demoObject->getVel().y) << "\t  "
-			"\n";
+			"\n";*/
 	}
 
 	totalTime2 += deltaTime;
