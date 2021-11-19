@@ -74,7 +74,7 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
 		}
 	}
 	else if (sdlEvent.type == SDL_EventType::SDL_KEYUP) {
-		demoObject->setVel(Vec3(0.0f, 0.0f, 0.0f));
+		demoObject->setAccel(Vec3(0.0f, -10.0f, 0.0f));
 	}
 	sdlEvent1 = sdlEvent;
 }
