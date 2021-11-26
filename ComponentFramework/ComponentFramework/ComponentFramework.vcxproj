@@ -171,6 +171,8 @@
   <ItemGroup>
     <None Include="shaders\phongFrag.glsl" />
     <None Include="shaders\phongVert.glsl" />
+    <None Include="shaders\textPhongFrag.glsl" />
+    <None Include="shaders\textPhongVert.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

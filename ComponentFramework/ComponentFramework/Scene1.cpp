@@ -27,18 +27,19 @@ bool Scene1::OnCreate() {
 	viewMatrix = MMath::lookAt(Vec3(0.0f, 10.0f, 30.0f), Vec3(0.0f, 10.0f, 0.0f), Vec3(0.0f, 1.0f, 0.0f));
 	viewMatrix.print();
 
-	if (ObjLoader::loadOBJ("meshes/Mario.obj") == false) {
+	if (ObjLoader::loadOBJ("meshes/Cube.obj") == false) {
 		return false;
 	}
 
 	meshPtr = new Mesh(GL_TRIANGLES, ObjLoader::vertices, ObjLoader::normals, ObjLoader::uvCoords);
-	shaderPtr = new Shader("shaders/phongVert.glsl", "shaders/phongFrag.glsl");
+	shaderPtr = new Shader("shaders/textPhongVert.glsl", "shaders/textPhongFrag.glsl");
 	texturePtr = new Texture();
 	if (meshPtr == nullptr || shaderPtr == nullptr || texturePtr == nullptr) {
 		Debug::FatalError("Couldn't create game object assets", __FILE__, __LINE__);
 		return false;
 	}
-	if (texturePtr->LoadImage("textures/viralSurface.jpg") == false) {
+
+	if (texturePtr->LoadImage("textures/joe-avg.png") == false) {
 		Debug::FatalError("Couldn't load texture", __FILE__, __LINE__);
 		return false;
 	}
@@ -97,7 +98,10 @@ void Scene1::Update(const float deltaTime) {
 	//demoObject->setVel(Vec3(1.0, 0.0, 0.0));
 	//Physics::ApplyForces(*demoObject, demoObject->waterHeight);
 	Physics::SimpleNewtonMotion(*demoObject, deltaTime);
-	demoObject->setModelMatrix(MMath::translate(demoObject->getPos()));
+
+	Matrix4 modelMatrix = MMath::translate(demoObject->getPos()) * MMath::rotate(300, Vec3(1.0f, 1.0f, 0.0f));
+
+	demoObject->setModelMatrix(modelMatrix);
 	//demoObject->getPos+=vel * deltaTime + (0.5 * accel * deltaTime)
 }
 
