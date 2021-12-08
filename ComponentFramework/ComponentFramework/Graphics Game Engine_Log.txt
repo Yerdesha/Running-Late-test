@@ -5,6 +5,4 @@
 [INFO]: Graphics card name Intel(R) UHD Graphics 630
 [INFO]: GLSL Version 4.60 - Build 27.20.100.8935
 [INFO]: Creating Timer
-[INFO]: Created Scene0: 
 [INFO]: Created Scene1: 
-[INFO]: Deleting the GameSceneManager

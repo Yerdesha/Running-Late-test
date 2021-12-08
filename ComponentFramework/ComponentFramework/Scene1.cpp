@@ -27,7 +27,7 @@ bool Scene1::OnCreate() {
 	viewMatrix = MMath::lookAt(Vec3(0.0f, 10.0f, 30.0f), Vec3(0.0f, 10.0f, 0.0f), Vec3(0.0f, 1.0f, 0.0f));
 	viewMatrix.print();
 
-	if (ObjLoader::loadOBJ("meshes/Cube.obj") == false) {
+	if (ObjLoader::loadOBJ("meshes/cube_triangle_export.obj") == false) {
 		return false;
 	}
 
@@ -48,9 +48,9 @@ bool Scene1::OnCreate() {
 		Debug::FatalError("GameObject could not be created", __FILE__, __LINE__);
 		return false;
 	}
-	demoObject->setPos(Vec3(-5.0, 0.0, 0.0));
+	demoObject->setPos(Vec3(0.0, 0.0, 0.0));
 	demoObject->setModelMatrix(MMath::translate(demoObject->getPos()));
-	demoObject->PhysicsObject::PhysicsObject(1000.0f, 1.0f, 1.0f, 2000.0f);
+	demoObject->PhysicsObject::PhysicsObject(1000.0f, 0.0f, 1.0f, 2000.0f);
 	return true;
 }
 
@@ -63,7 +63,9 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
 		}
 		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_A) {
 			printf("Pressing A\n");
+			//demoObject->setModelMatrix(MMath::rotate(180, Vec3(0.0f, -1.0f, 0.0f)));
 			demoObject->setVel(Vec3(-10.0f, 0.0f, 0.0f));
+			
 		}
 		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_S) {
 			printf("Pressing S\n");
@@ -73,11 +75,16 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
 			printf("Pressing D\n");
 			demoObject->setVel(Vec3(10.0f, 0.0f, 0.0f));
 		}
+		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_SPACE) {
+			printf("Pressing SPACE\n");
+			demoObject->setAccel(Vec3(0.0f, 5.0f, 0.0f));
+		}
 	}
 	else if (sdlEvent.type == SDL_EventType::SDL_KEYUP) {
-		demoObject->setAccel(Vec3(0.0f, -10.0f, 0.0f));
+		demoObject->setVel(Vec3(0.0f, 0.0f, 0.0f));
 	}
 	sdlEvent1 = sdlEvent;
+	
 }
 
 void Scene1::Update(const float deltaTime) {
@@ -98,8 +105,8 @@ void Scene1::Update(const float deltaTime) {
 	//demoObject->setVel(Vec3(1.0, 0.0, 0.0));
 	//Physics::ApplyForces(*demoObject, demoObject->waterHeight);
 	Physics::SimpleNewtonMotion(*demoObject, deltaTime);
-
-	Matrix4 modelMatrix = MMath::translate(demoObject->getPos()) * MMath::rotate(300, Vec3(1.0f, 1.0f, 0.0f));
+	Matrix4 modelMatrix = MMath::translate(demoObject->getPos()) *
+		MMath::scale(0.5f, 0.5f, 0.5f);
 
 	demoObject->setModelMatrix(modelMatrix);
 	//demoObject->getPos+=vel * deltaTime + (0.5 * accel * deltaTime)

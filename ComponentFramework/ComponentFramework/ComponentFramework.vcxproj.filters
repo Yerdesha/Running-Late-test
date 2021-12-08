@@ -81,6 +81,9 @@
     <ClCompile Include="ObjLoader2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Debug.h">
@@ -149,6 +152,9 @@
     <ClInclude Include="ObjLoader2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SpriteRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Graphics Game Engine_Log.txt">
@@ -166,6 +172,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="shaders\textPhongVert.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\spritePhongFrag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\spritePhongVert.glsl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
