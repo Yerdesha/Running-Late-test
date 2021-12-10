@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "Vector.h"
 #include "Matrix.h"
+#include <SDL_mixer.h>
 using namespace MATH;
 
 /// Forward declarations 
@@ -25,6 +26,8 @@ private:
 	Matrix4 projectionMatrix;
 	Matrix4 viewMatrix;
 	SDL_Event sdlEvent1;
+
+	Mix_Chunk* jump = NULL;
 public:
 	explicit Scene1();
 	virtual ~Scene1();

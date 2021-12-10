@@ -1,4 +1,4 @@
-#version 460
+#version 450
 in  vec3 vertNormal;
 in  vec3 lightDir;
 in  vec3 eyeDir;

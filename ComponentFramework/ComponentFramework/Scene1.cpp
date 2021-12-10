@@ -1,6 +1,8 @@
 #include <glew.h>
 #include <SDL.h>
 #include <iostream>
+#include <SDL_image.h>
+#include <SDL_opengl.h>
 #include "Debug.h"
 #include "Scene1.h"
 #include "ObjLoader.h"
@@ -12,6 +14,7 @@
 #include "Physics.h"
 #include "DemoObject.h"
 
+
 float totalTime2 = 0.0f;
 float TimeCounter2;
 
@@ -19,7 +22,8 @@ Scene1::Scene1() : meshPtr(nullptr), shaderPtr(nullptr), texturePtr(nullptr) {
 	Debug::Info("Created Scene1: ", __FILE__, __LINE__);
 }
 
-Scene1::~Scene1() {}
+Scene1::~Scene1() {
+}
 
 bool Scene1::OnCreate() {
 	lightSource = Vec3(0.0f, 0.0f, 0.0f);
@@ -27,6 +31,13 @@ bool Scene1::OnCreate() {
 	viewMatrix = MMath::lookAt(Vec3(0.0f, 10.0f, 30.0f), Vec3(0.0f, 10.0f, 0.0f), Vec3(0.0f, 1.0f, 0.0f));
 	viewMatrix.print();
 
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
+		printf("SDL ERROR:\n", SDL_GetError());
+	}
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
+		printf("SDL ERROR:\n", Mix_GetError());
+	}
+	
 	if (ObjLoader::loadOBJ("meshes/cube_triangle_export.obj") == false) {
 		return false;
 	}
@@ -78,11 +89,15 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
 		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_SPACE) {
 			printf("Pressing SPACE\n");
 			demoObject->setAccel(Vec3(0.0f, 5.0f, 0.0f));
+			printf("Sound Playing\n");
+			Mix_PlayChannel(-1, jump, 0);
 		}
 	}
 	else if (sdlEvent.type == SDL_EventType::SDL_KEYUP) {
 		demoObject->setVel(Vec3(0.0f, 0.0f, 0.0f));
 	}
+
+
 	sdlEvent1 = sdlEvent;
 	
 }
@@ -100,6 +115,8 @@ void Scene1::Update(const float deltaTime) {
 			<< "|Velocity: " << (demoObject->getVel().y) << "\t  "
 			"\n";*/
 	}
+
+	jump = Mix_LoadWAV("sounds/jump.wav");
 
 	totalTime2 += deltaTime;
 	//demoObject->setVel(Vec3(1.0, 0.0, 0.0));
@@ -129,6 +146,7 @@ void Scene1::Render() const {
 
 	demoObject->Render();
 	glUseProgram(0);
+
 }
 
 
@@ -137,4 +155,8 @@ void Scene1::OnDestroy() {
 	if (texturePtr) delete texturePtr, texturePtr = nullptr;
 	if (shaderPtr) delete shaderPtr, shaderPtr = nullptr;
 	if (demoObject) delete demoObject, demoObject = nullptr;
+
+	Mix_FreeChunk(jump);
+	Mix_Quit();
+	SDL_Quit();
 }
