@@ -1,6 +1,6 @@
 ﻿  Scene1.cpp
-C:\Users\ethan\Desktop\Game Programming Fall 2021\MidStone\Running-Late-test\ComponentFramework\ComponentFramework\Scene1.cpp(35,38): warning C4474: 'printf' : too many arguments passed for format string
-C:\Users\ethan\Desktop\Game Programming Fall 2021\MidStone\Running-Late-test\ComponentFramework\ComponentFramework\Scene1.cpp(35,38): message : placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-C:\Users\ethan\Desktop\Game Programming Fall 2021\MidStone\Running-Late-test\ComponentFramework\ComponentFramework\Scene1.cpp(38,38): warning C4474: 'printf' : too many arguments passed for format string
-C:\Users\ethan\Desktop\Game Programming Fall 2021\MidStone\Running-Late-test\ComponentFramework\ComponentFramework\Scene1.cpp(38,38): message : placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-  ComponentFramework.vcxproj -> C:\Users\ethan\Desktop\Game Programming Fall 2021\MidStone\Running-Late-test\ComponentFramework\Debug\ComponentFramework.exe
+D:\GitHub\Running-Late-test\ComponentFramework\ComponentFramework\Scene1.cpp(35,38): warning C4474: 'printf' : too many arguments passed for format string
+D:\GitHub\Running-Late-test\ComponentFramework\ComponentFramework\Scene1.cpp(35,38): message : placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+D:\GitHub\Running-Late-test\ComponentFramework\ComponentFramework\Scene1.cpp(38,38): warning C4474: 'printf' : too many arguments passed for format string
+D:\GitHub\Running-Late-test\ComponentFramework\ComponentFramework\Scene1.cpp(38,38): message : placeholders and their parameters expect 0 variadic arguments, but 1 were provided
+  ComponentFramework.vcxproj -> D:\GitHub\Running-Late-test\ComponentFramework\Debug\ComponentFramework.exe

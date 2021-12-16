@@ -15,7 +15,7 @@ public:
 private:
 	enum SCENE_NUMBER {
 		SCENE0 = 0,
-		SCENE1,
+		SCENE1 = 1,
 		SCENE2,
 		SCENE3,
 		SCENE4,

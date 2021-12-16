@@ -30,7 +30,7 @@ bool Scene1::OnCreate() {
 	projectionMatrix = MMath::perspective(45.0f, (16.0f / 9.0f), 0.5f, 100.0f);
 	viewMatrix = MMath::lookAt(Vec3(0.0f, 10.0f, 30.0f), Vec3(0.0f, 10.0f, 0.0f), Vec3(0.0f, 1.0f, 0.0f));
 	viewMatrix.print();
-
+	
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
 		printf("SDL ERROR:\n", SDL_GetError());
 	}
@@ -88,12 +88,13 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
 		}
 		if (sdlEvent.key.keysym.scancode == SDL_SCANCODE_SPACE) {
 			printf("Pressing SPACE\n");
-			demoObject->setAccel(Vec3(0.0f, 5.0f, 0.0f));
+			demoObject->setVel(Vec3(0.0f, 15.0f, 0.0f));
 			printf("Sound Playing\n");
 			Mix_PlayChannel(-1, jump, 0);
 		}
 	}
 	else if (sdlEvent.type == SDL_EventType::SDL_KEYUP) {
+		demoObject->setAccel(Vec3(0.0f, -10.0f, 0.0f));
 		demoObject->setVel(Vec3(0.0f, 0.0f, 0.0f));
 	}
 
@@ -105,6 +106,18 @@ void Scene1::HandleEvents(const SDL_Event& sdlEvent) {
 void Scene1::Update(const float deltaTime) {
 	demoObject->Update(deltaTime);
 	HandleEvents(sdlEvent1);
+	
+
+	Vec3 demoObjectPos = demoObject->getPos();
+
+	if (demoObject->getPos().y <= -1.0f)
+	{
+		demoObject->setPos(Vec3(demoObjectPos.x, -1.0f, demoObjectPos.z));
+		demoObject->setAccel(Vec3(0.0f, 0.0f, 0.0f));
+
+	}
+	
+	
 
 	//console output that helps track and tell everything in the console
 	if (totalTime2 >= TimeCounter2) {
@@ -126,7 +139,9 @@ void Scene1::Update(const float deltaTime) {
 		MMath::scale(0.5f, 0.5f, 0.5f);
 
 	demoObject->setModelMatrix(modelMatrix);
-	//demoObject->getPos+=vel * deltaTime + (0.5 * accel * deltaTime)
+	//demoObject->getPos()+=vel * deltaTime + (0.5 * accel * deltaTime)
+	
+	
 }
 
 void Scene1::Render() const {

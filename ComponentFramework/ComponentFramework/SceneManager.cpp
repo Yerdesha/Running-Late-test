@@ -83,6 +83,10 @@ void SceneManager::GetEvents() {
 				return;
 
 			case SDL_SCANCODE_F1:
+				BuildScene(SCENE0);
+				break;
+
+			case SDL_SCANCODE_F2:
 				BuildScene(SCENE1);
 				break;
 
